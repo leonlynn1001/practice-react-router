@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import useTeamNames from '../hooks/useTeamNames';
 import useTeamArticles from '../hooks/useTeamArticles';
 import useTeam from '../hooks/useTeam';
-import slugify from '../utils';
+import slugify from '../utils/slugify';
 
 function useTeamPageData(teamId){
   const {response:teamNames,loading:teamNamesLoading} = useTeamNames();
@@ -23,7 +23,7 @@ const TeamDetails = () => {
     if(!teamNames?.includes(teamId)){
       return <p className='text-center py-8'>The {teamId} does not exist!</p>
     }
-    console.log(team);
+   // console.log(team);
   return (
     <section className='py-16'>
       <div className="container mx-auto text-center">
@@ -32,7 +32,7 @@ const TeamDetails = () => {
           {team?.name}
         </h1>
         <h4 className="mt-6 text-2xl text-center">
-          <Link to={{pathName:'/players',search:`?teamId=${teamId}`}}>
+          <Link className='btn' to={{pathname:'/players',search:`?teamId=${teamId}`}}>
             View Players          
           </Link>
         </h4>

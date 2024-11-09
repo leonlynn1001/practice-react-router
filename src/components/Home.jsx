@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import useTeamNames from '../hooks/useTeamNames';
+import Spinner from './Spinner';
 
 const Home = () => {
   //do api request using hook doesn't affect the url
   const { response: teamNames, loading } = useTeamNames();
  
-  if (loading) return null;
+  if (loading) return <Spinner/>;
   //console.log(teamNames);
   return (
     <section className='py-16'>
